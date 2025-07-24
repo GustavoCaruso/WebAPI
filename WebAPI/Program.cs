@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WebAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddControllers();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DonationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
@@ -21,7 +21,7 @@ if (!app.Environment.IsDevelopment())
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.MapControllers();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
